@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja Fala Felipe — A história já respondeu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1D33;
+    --navy-deep:#071527;
+    --azure:#3E7CB1;
+    --amber:#D9A441;
+    --parchment:#F3EEE3;
+    --ink:#16181D;
+    --paper-line:rgba(11,29,51,0.12);
+    --serif-display:'Bebas Neue', sans-serif;
+    --sans:'DM Sans', sans-serif;
+    --mono:'DM Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--sans);background:var(--parchment);color:var(--ink);line-height:1.5;}
+  h1,h2,h3,.display{font-family:var(--serif-display);letter-spacing:0.02em;line-height:0.95;text-transform:uppercase;margin:0;}
+  .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:0.18em;font-size:0.72rem;color:var(--amber);}
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  button{font-family:var(--sans);cursor:pointer;}
+
+  /* NAV */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(11,29,51,0.95);backdrop-filter:blur(6px);border-bottom:1px solid rgba(217,164,65,0.2);}
+  .navrow{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;}
+  .logo{font-family:var(--serif-display);color:var(--parchment);font-size:1.4rem;letter-spacing:0.03em;}
+  .logo span{color:var(--amber);}
+  nav.links{display:flex;gap:24px;font-size:0.86rem;color:var(--parchment);}
+  nav.links a{text-decoration:none;opacity:0.85;transition:opacity .2s;}
+  nav.links a:hover{opacity:1;color:var(--amber);}
+  .nav-cta{background:var(--amber);color:var(--navy-deep);padding:9px 16px;border-radius:2px;border:none;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.03em;}
+  @media (max-width:820px){ nav.links{display:none;} }
+
+  /* HERO */
+  .hero{background:radial-gradient(ellipse at 20% -10%, rgba(62,124,177,0.25), transparent 55%), var(--navy);color:var(--parchment);padding:80px 24px 64px;}
+  .hero .wrap{display:grid;grid-template-columns:1.3fr 0.8fr;gap:48px;align-items:center;}
+  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(2.3rem,5.4vw,3.9rem);color:var(--parchment);}
+  .hero h1 em{font-style:normal;color:var(--amber);}
+  .hero p.sub{font-size:1.08rem;max-width:46ch;margin-top:18px;color:rgba(243,238,227,0.82);}
+  .hero .cta-row{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;}
+  .btn-primary{background:var(--amber);color:var(--navy-deep);border:none;padding:15px 28px;font-weight:700;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.03em;border-radius:2px;}
+  .btn-ghost{background:transparent;color:var(--parchment);border:1px solid rgba(243,238,227,0.35);padding:15px 28px;font-weight:600;font-size:0.9rem;border-radius:2px;text-decoration:none;}
+  .stamp-wrap{display:flex;justify-content:center;}
+  .stamp{width:180px;height:180px;border-radius:50%;border:3px solid var(--amber);display:flex;align-items:center;justify-content:center;transform:rotate(-14deg);color:var(--amber);text-align:center;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.07em;font-size:0.72rem;position:relative;opacity:0.92;}
+  .stamp::before{content:"";position:absolute;inset:9px;border:1px solid var(--amber);border-radius:50%;opacity:0.6;}
+  .stamp b{display:block;font-family:var(--serif-display);font-size:1.15rem;letter-spacing:0.05em;margin:4px 0;}
+
+  /* STRIP */
+  .strip{background:var(--navy-deep);border-top:1px solid rgba(217,164,65,0.15);padding:22px 24px;}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media (max-width:760px){ .strip .wrap{grid-template-columns:1fr 1fr;} }
+  .strip-item{color:rgba(243,238,227,0.8);font-size:0.82rem;display:flex;gap:8px;align-items:flex-start;}
+  .strip-item .dot{color:var(--amber);font-family:var(--serif-display);}
+
+  /* SECTION SHELL */
+  section{padding:70px 24px;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;max-width:1180px;margin:0 auto 32px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(1.8rem,3.6vw,2.5rem);margin-top:8px;color:var(--navy);}
+  .section-head p{margin-top:10px;color:#3d4148;font-size:0.98rem;max-width:52ch;}
+  section.dark{background:var(--navy);}
+  section.dark .section-head h2{color:var(--parchment);}
+  section.dark .section-head p{color:rgba(243,238,227,0.75);}
+  .shelf-nav{display:flex;gap:8px;}
+  .shelf-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--paper-line);background:#fffdf7;color:var(--navy);font-size:1rem;display:flex;align-items:center;justify-content:center;}
+  section.dark .shelf-btn{background:rgba(243,238,227,0.08);border-color:rgba(243,238,227,0.25);color:var(--parchment);}
+
+  /* SHELF / CAROUSEL */
+  .shelf-outer{max-width:1180px;margin:0 auto;position:relative;}
+  .shelf{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 18px;scrollbar-width:none;}
+  .shelf::-webkit-scrollbar{display:none;}
+  .book-card{flex:0 0 200px;scroll-snap-align:start;display:flex;flex-direction:column;}
+  .cover{aspect-ratio:2/3;border-radius:3px;position:relative;overflow:hidden;box-shadow:0 16px 30px -18px rgba(11,29,51,0.5);display:flex;flex-direction:column;justify-content:space-between;padding:16px 14px;}
+  .cover-a{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);border-left:6px solid var(--amber);}
+  .cover-b{background:#fffdf7;border:1px solid var(--paper-line);border-left:6px solid var(--azure);}
+  .cover-c{background:linear-gradient(160deg,var(--azure) 0%,var(--navy) 100%);border-left:6px solid var(--parchment);}
+  .cover-case{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;}
+  .cover-a .cover-case, .cover-c .cover-case{color:rgba(243,238,227,0.7);}
+  .cover-b .cover-case{color:var(--azure);}
+  .cover-title{font-family:var(--serif-display);font-size:1.25rem;letter-spacing:0.02em;line-height:1;}
+  .cover-a .cover-title, .cover-c .cover-title{color:var(--parchment);}
+  .cover-b .cover-title{color:var(--navy);}
+  .cover-ribbon{position:absolute;top:10px;right:-30px;background:var(--amber);color:var(--navy-deep);font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 34px;transform:rotate(38deg);}
+  .book-meta{margin-top:12px;}
+  .book-tag{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--azure);}
+  section.dark .book-tag{color:var(--amber);}
+  .book-name{font-weight:700;font-size:0.95rem;margin-top:4px;color:var(--navy);}
+  section.dark .book-name{color:var(--parchment);}
+  .book-format{font-size:0.76rem;color:#6a6f78;margin-top:2px;}
+  section.dark .book-format{color:rgba(243,238,227,0.6);}
+  .book-price-row{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:8px;}
+  .book-price{font-family:var(--mono);font-weight:500;font-size:0.85rem;color:var(--navy);}
+  section.dark .book-price{color:var(--parchment);}
+  .book-price.pending{color:#8a8f98;font-size:0.72rem;}
+  .btn-buy{background:var(--navy);color:var(--parchment);border:none;padding:9px 14px;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;border-radius:2px;}
+  section.dark .btn-buy{background:var(--amber);color:var(--navy-deep);}
+  .btn-buy.ghost{background:transparent;border:1px solid var(--paper-line);color:var(--navy);}
+  section.dark .btn-buy.ghost{border-color:rgba(243,238,227,0.3);color:var(--parchment);}
+  .slot-card .cover{border:1px dashed rgba(11,29,51,0.3);background:rgba(11,29,51,0.03);align-items:center;text-align:center;justify-content:center;}
+  section.dark .slot-card .cover{border-color:rgba(243,238,227,0.3);background:rgba(243,238,227,0.04);}
+  .slot-card .cover-title{font-size:0.85rem;color:#6a6f78;text-transform:none;letter-spacing:0;}
+  section.dark .slot-card .cover-title{color:rgba(243,238,227,0.55);}
+
+  /* BIBLE SPOTLIGHT */
+  .bible-block{display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;align-items:center;background:#fffdf7;border:1px solid var(--paper-line);border-radius:4px;padding:40px;max-width:1180px;margin:0 auto;}
+  @media (max-width:820px){ .bible-block{grid-template-columns:1fr;} }
+  .bible-block h3{font-size:1.8rem;color:var(--navy);}
+  .bible-block p{color:#3d4148;margin-top:12px;}
+  .evidence-list{margin-top:18px;display:flex;flex-direction:column;gap:9px;}
+  .evidence-list div{display:flex;gap:10px;font-size:0.9rem;color:#33363d;}
+  .evidence-list span.mark{color:var(--azure);font-family:var(--serif-display);}
+  .waitlist{display:flex;gap:10px;flex-wrap:wrap;}
+  .waitlist input{background:rgba(11,29,51,0.04);border:1px solid var(--paper-line);color:var(--navy);padding:13px 15px;border-radius:2px;font-family:var(--sans);min-width:210px;font-size:0.88rem;}
+  section.dark .waitlist input{background:rgba(243,238,227,0.08);border-color:rgba(243,238,227,0.3);color:var(--parchment);}
+  section.dark .waitlist input::placeholder{color:rgba(243,238,227,0.5);}
+  .waitlist button{background:var(--amber);border:none;color:var(--navy-deep);font-weight:700;padding:13px 20px;border-radius:2px;text-transform:uppercase;font-size:0.78rem;letter-spacing:0.03em;white-space:nowrap;}
+  .form-msg{font-family:var(--mono);font-size:0.75rem;color:var(--azure);margin-top:8px;min-height:14px;}
+
+  /* FAQ */
+  .faq{max-width:820px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid rgba(243,238,227,0.18);padding:20px 0;}
+  .faq-item summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--parchment);font-weight:700;font-size:1rem;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";color:var(--amber);font-family:var(--serif-display);font-size:1.3rem;}
+  .faq-item[open] summary::after{content:"–";}
+  .faq-item p{color:rgba(243,238,227,0.75);margin-top:12px;font-size:0.92rem;max-width:70ch;}
+
+  /* FOOTER */
+  footer{background:var(--navy-deep);color:rgba(243,238,227,0.7);padding:52px 24px 28px;}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;padding-bottom:34px;border-bottom:1px solid rgba(243,238,227,0.12);max-width:1180px;margin:0 auto;}
+  .foot-top h3{color:var(--parchment);font-size:1.5rem;max-width:20ch;}
+  footer .social{display:flex;gap:16px;margin-top:16px;font-size:0.84rem;}
+  footer .social a{text-decoration:none;color:var(--amber);}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:0.76rem;flex-wrap:wrap;gap:10px;max-width:1180px;margin:0 auto;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <div class="logo">FALA <span>FELIPE</span></div>
+    <nav class="links">
+      <a href="#ebooks">Ebooks</a>
+      <a href="#devocionais">Devocionais</a>
+      <a href="#livros">Livros</a>
+      <a href="#biblias">Bíblias</a>
+      <a href="#faq">Perguntas</a>
+    </nav>
+    <button class="nav-cta" onclick="document.getElementById('ebooks').scrollIntoView()">Ver loja</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Caso aberto desde o primeiro século</p>
+      <h1>Sua fé não precisa<br>de um salto <em>no escuro.</em></h1>
+      <p class="sub">Ela precisa de provas. Reuni aqui meus ebooks, uma seleção de devocionais que valem seu tempo e o material que ainda estou construindo — tudo com o mesmo critério dos vídeos: fonte antes de opinião.</p>
+      <div class="cta-row">
+        <button class="btn-primary" onclick="document.getElementById('ebooks').scrollIntoView()">Ver a loja</button>
+        <a href="#biblias" class="btn-ghost">Ver Bíblias selecionadas →</a>
+      </div>
+    </div>
+    <div class="stamp-wrap">
+      <div class="stamp">Dossiê<b>A História<br>Não Mente</b>evidência verificada</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item"><span class="dot">—</span> Fontes seculares, não devocionais de autoajuda</div>
+    <div class="strip-item"><span class="dot">—</span> Entrega digital imediata após a compra</div>
+    <div class="strip-item"><span class="dot">—</span> Curadoria: só entra aqui o que eu mesmo leria</div>
+    <div class="strip-item"><span class="dot">—</span> Zero jargão de "coach cristão"</div>
+  </div>
+</div>
+
+<!-- EBOOKS SHELF -->
+<section id="ebooks">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">De minha autoria</p>
+      <h2>Ebooks</h2>
+      <p>Escrevo o que falo nos vídeos, só que sem o limite de 30 segundos.</p>
+    </div>
+    <div class="shelf-nav">
+      <button class="shelf-btn" onclick="scrollShelf('shelf-ebooks',-1)">←</button>
+      <button class="shelf-btn" onclick="scrollShelf('shelf-ebooks',1)">→</button>
+    </div>
+  </div>
+  <div class="shelf-outer">
+    <div class="shelf" id="shelf-ebooks">
+
+      <div class="book-card">
+        <div class="cover cover-a">
+          <div class="cover-ribbon">Disponível</div>
+          <span class="cover-case">Caso Nº 001</span>
+          <span class="cover-title">A História Não Mente</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Autoria: Felipe</span>
+          <div class="book-name">A História Não Mente</div>
+          <div class="book-format">Ebook · PDF e EPUB</div>
+          <div class="book-price-row">
+            <span class="book-price pending">Preço em breve</span>
+            <button class="btn-buy" onclick="notify('historia')">Avisa</button>
+          </div>
+          <div class="form-msg" id="msg-historia"></div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="cover cover-a">
+          <div class="cover-ribbon">Disponível</div>
+          <span class="cover-case">Caso Nº 002</span>
+          <span class="cover-title">Manual do Homem Espiritual Inabalável</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Autoria: Felipe</span>
+          <div class="book-name">Manual do Homem Espiritual Inabalável</div>
+          <div class="book-format">Ebook · PDF e EPUB</div>
+          <div class="book-price-row">
+            <span class="book-price pending">Preço em breve</span>
+            <button class="btn-buy" onclick="notify('manual')">Avisa</button>
+          </div>
+          <div class="form-msg" id="msg-manual"></div>
+        </div>
+      </div>
+
+      <div class="book-card slot-card">
+        <div class="cover cover-a" style="border-left-color:rgba(217,164,65,0.4);opacity:0.75;">
+          <span class="cover-case">Caso Nº 003</span>
+          <span class="cover-title">Em investigação</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Próximo ebook</span>
+          <div class="book-name">Ainda sem título</div>
+          <div class="book-format">Data a definir</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEVOCIONAIS SHELF -->
+<section class="dark" id="devocionais">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Curadoria + autoria</p>
+      <h2>Devocionais</h2>
+      <p>Alguns eu escrevo, outros eu garimpo e só coloco aqui se valeria meu próprio tempo lendo.</p>
+    </div>
+    <div class="shelf-nav">
+      <button class="shelf-btn" onclick="scrollShelf('shelf-devocionais',-1)">←</button>
+      <button class="shelf-btn" onclick="scrollShelf('shelf-devocionais',1)">→</button>
+    </div>
+  </div>
+  <div class="shelf-outer">
+    <div class="shelf" id="shelf-devocionais">
+
+      <div class="book-card">
+        <div class="cover cover-c">
+          <span class="cover-case">Caso Nº 003</span>
+          <span class="cover-title">30 Dias de Evidência</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Autoria: Felipe</span>
+          <div class="book-name">30 Dias de Evidência</div>
+          <div class="book-format">Devocional · em produção</div>
+          <div class="book-price-row">
+            <span class="book-price pending">Em breve</span>
+            <button class="btn-buy" onclick="notify('devocional1')">Avisa</button>
+          </div>
+          <div class="form-msg" id="msg-devocional1"></div>
+        </div>
+      </div>
+
+      <div class="book-card slot-card">
+        <div class="cover cover-b">
+          <span class="cover-case">Vaga 1</span>
+          <span class="cover-title">Título do devocional</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Selecionado por Felipe</span>
+          <div class="book-name">Adicionar título e autor</div>
+          <div class="book-format">Formato a definir</div>
+        </div>
+      </div>
+
+      <div class="book-card slot-card">
+        <div class="cover cover-b">
+          <span class="cover-case">Vaga 2</span>
+          <span class="cover-title">Título do devocional</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Selecionado por Felipe</span>
+          <div class="book-name">Adicionar título e autor</div>
+          <div class="book-format">Formato a definir</div>
+        </div>
+      </div>
+
+      <div class="book-card slot-card">
+        <div class="cover cover-b">
+          <span class="cover-case">Vaga 3</span>
+          <span class="cover-title">Título do devocional</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Selecionado por Felipe</span>
+          <div class="book-name">Adicionar título e autor</div>
+          <div class="book-format">Formato a definir</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIVROS SHELF -->
+<section id="livros">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">De minha autoria</p>
+      <h2>Livros</h2>
+      <p>Os próximos passos, em formato mais longo que ebook.</p>
+    </div>
+    <div class="shelf-nav">
+      <button class="shelf-btn" onclick="scrollShelf('shelf-livros',-1)">←</button>
+      <button class="shelf-btn" onclick="scrollShelf('shelf-livros',1)">→</button>
+    </div>
+  </div>
+  <div class="shelf-outer">
+    <div class="shelf" id="shelf-livros">
+
+      <div class="book-card slot-card">
+        <div class="cover cover-a" style="opacity:0.75;">
+          <span class="cover-case">Caso Nº 004</span>
+          <span class="cover-title">Em investigação</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Autoria: Felipe</span>
+          <div class="book-name">Próximo livro</div>
+          <div class="book-format">Título e data a definir</div>
+        </div>
+      </div>
+
+      <div class="book-card slot-card">
+        <div class="cover cover-a" style="opacity:0.6;">
+          <span class="cover-case">Caso Nº 005</span>
+          <span class="cover-title">Reservado</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Autoria: Felipe</span>
+          <div class="book-name">Vaga reservada</div>
+          <div class="book-format">A definir</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BIBLIAS SHELF -->
+<section class="dark" id="biblias">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Curadoria</p>
+      <h2>Bíblias</h2>
+      <p>Não escrevo Bíblia. Seleciono as edições que eu mesmo indicaria — tradução, formato e propósito de estudo.</p>
+    </div>
+    <div class="shelf-nav">
+      <button class="shelf-btn" onclick="scrollShelf('shelf-biblias',-1)">←</button>
+      <button class="shelf-btn" onclick="scrollShelf('shelf-biblias',1)">→</button>
+    </div>
+  </div>
+  <div class="shelf-outer">
+    <div class="shelf" id="shelf-biblias">
+
+      <div class="book-card slot-card">
+        <div class="cover cover-b">
+          <span class="cover-case">Vaga 1</span>
+          <span class="cover-title">Título da Bíblia</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Selecionado por Felipe</span>
+          <div class="book-name">Adicionar título, tradução e editora</div>
+          <div class="book-format">Formato a definir</div>
+        </div>
+      </div>
+
+      <div class="book-card slot-card">
+        <div class="cover cover-b">
+          <span class="cover-case">Vaga 2</span>
+          <span class="cover-title">Título da Bíblia</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Selecionado por Felipe</span>
+          <div class="book-name">Adicionar título, tradução e editora</div>
+          <div class="book-format">Formato a definir</div>
+        </div>
+      </div>
+
+      <div class="book-card slot-card">
+        <div class="cover cover-b">
+          <span class="cover-case">Vaga 3</span>
+          <span class="cover-title">Título da Bíblia</span>
+        </div>
+        <div class="book-meta">
+          <span class="book-tag">Selecionado por Felipe</span>
+          <div class="book-name">Adicionar título, tradução e editora</div>
+          <div class="book-format">Formato a definir</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="faq">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Antes de perguntar nos comentários</p>
+      <h2>As objeções que eu já sei que você tem.</h2>
+    </div>
+  </div>
+  <div class="faq">
+    <details class="faq-item" open>
+      <summary>É tudo escrito por você?</summary>
+      <p>Não. Os ebooks e o próximo devocional são meus, de ponta a ponta. Os devocionais e as Bíblias da loja são de outros autores e editoras — eu só coloco na prateleira o que eu mesmo indicaria, e deixo claro quem é o autor de cada um.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Como funciona a entrega depois que eu comprar?</summary>
+      <p>É tudo digital: PDF e/ou EPUB liberados automaticamente após a confirmação do pagamento, direto no seu e-mail.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Por que alguns produtos ainda não têm preço?</summary>
+      <p>Porque prefiro fechar o preço quando o produto está pronto de verdade. Quem entra na lista de aviso sabe em primeira mão e geralmente entra com condição de lançamento.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Isso substitui ir à igreja ou ler a Bíblia direto?</summary>
+      <p>Não, e nunca foi essa a proposta. É material de apoio pra quem quer entender o "porquê" por trás do que já crê.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div>
+      <h3>A história já respondeu.</h3>
+      <div class="social">
+        <a href="#">Instagram →</a>
+        <a href="#">TikTok →</a>
+      </div>
+    </div>
+    <div style="max-width:340px;">
+      <p class="eyebrow" style="color:var(--amber);">Fique sabendo primeiro</p>
+      <div class="waitlist" style="margin-top:14px;">
+        <input type="email" id="email-geral" placeholder="seu melhor e-mail">
+        <button onclick="notify('geral')">Quero saber</button>
+      </div>
+      <div class="form-msg" id="msg-geral"></div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Fala Felipe. Todo o conteúdo é de responsabilidade do autor.</span>
+    <span>Feito pra quem prefere fonte a opinião.</span>
+  </div>
+</footer>
+
+<script>
+  function scrollShelf(id, dir){
+    const el = document.getElementById(id);
+    el.scrollBy({left: dir * 320, behavior: 'smooth'});
+  }
+  function notify(key){
+    const emailInput = document.getElementById('email-' + key);
+    const msg = document.getElementById('msg-' + key);
+    if(emailInput){
+      const val = emailInput.value.trim();
+      if(!val || !val.includes('@')){
+        msg.textContent = 'Digite um e-mail válido.';
+        return;
+      }
+      msg.textContent = 'Anotado. Você é dos primeiros a saber.';
+      emailInput.value = '';
+    } else {
+      msg.textContent = 'Anotado. Avisamos assim que abrir.';
+    }
+  }
+</script>
+
+</body>
+</html>
